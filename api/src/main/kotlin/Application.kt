@@ -1,7 +1,6 @@
 package com.fluxo
 
--leve
-
+import com.fluxodia.core.infraestructure.DatabaseFactory
 import io.ktor.server.application.*
 
 fun main(args: Array<String>) {
@@ -9,8 +8,9 @@ fun main(args: Array<String>) {
 }
 
 fun Application.module() {
-    configureHTTP()
-    configureSerialization()
     configureDatabases()
-    configureRouting()
+}
+
+fun Application.configureDatabases() {
+    DatabaseFactory.init(environment.config)
 }

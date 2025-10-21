@@ -1,3 +1,4 @@
+// Declaração de versões para serem usadas no projeto
 val exposed_version: String by project
 val h2_version: String by project
 val kotlin_version: String by project
@@ -22,9 +23,21 @@ subprojects {
     }
 
     dependencies {
-        // Common dependencies for all subprojects
         implementation(kotlin("stdlib"))
+        implementation("io.ktor:ktor-server-config-yaml:2.3.11")
+        implementation("org.postgresql:postgresql:42.7.3")
+        implementation("org.jetbrains.exposed:exposed-core:0.51.1")
+        implementation("org.jetbrains.exposed:exposed-jdbc:0.51.1")
+        implementation("io.ktor:ktor-server-core-jvm:2.3.11")
+        implementation("io.ktor:ktor-server-netty-jvm:2.3.11")
     }
 }
 
+dependencies {
+    implementation("io.ktor:ktor-server-core-jvm:2.3.11")
+    implementation("io.ktor:ktor-server-netty-jvm:2.3.11")
 
+
+
+    implementation(project(":core"))
+}
