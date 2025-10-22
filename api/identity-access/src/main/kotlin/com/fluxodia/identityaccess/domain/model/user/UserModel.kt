@@ -1,6 +1,7 @@
 package com.fluxodia.identityaccess.domain.model.user
 
 import com.fluxodia.core.exceptions.ValidationException
+import java.time.LocalDateTime
 import java.time.ZonedDateTime
 import java.util.UUID
 
@@ -8,8 +9,8 @@ data class User(
     val id: UUID,
     var name: String,
     val email: String,
-    private var passwordHash: String,
-    val createdAt: ZonedDateTime
+    val passwordHash: String,
+    val createdAt: LocalDateTime
 ) {
 
     fun changeName(newName: String) {
