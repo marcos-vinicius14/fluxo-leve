@@ -1,5 +1,6 @@
 package com.fluxodia.identityaccess.domain.model.user
 
+import com.fluxodia.core.exceptions.ValidationException
 import java.time.ZonedDateTime
 import java.util.UUID
 
@@ -13,7 +14,7 @@ data class User(
 
     fun changeName(newName: String) {
         if (newName.isBlank() || newName.length < 2) {
-            throw IllegalArgumentException("User name must be at least 2 characters long.")
+            throw ValidationException("O nome de usuário deve ser maior que 2 caracteres.")
         }
         this.copy(name = newName)
     }
@@ -28,26 +29,26 @@ data class User(
 
         fun validateEmail(email: String) {
             if (!EMAIL_REGEX.matches(email)) {
-                throw IllegalArgumentException("Invalid email format.")
+                throw ValidationException("Formato de email inválido.")
             }
         }
 
         fun validatePassword(passwordHash: String) {
             if (passwordHash.length < 8) {
-                throw IllegalArgumentException("Password must be at least 8 characters long.")
+                throw ValidationException("A senha deve conter mais de 8 caracteres.")
             }
             if (!passwordHash.contains(Regex("[A-Z]"))) {
-                throw IllegalArgumentException("Password must contain at least one uppercase letter.")
+                throw ValidationException("Senha deve conter 1 letra maiuscula.")
             }
             if (!passwordHash.contains(Regex("[!@#\$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]"))) {
-                throw IllegalArgumentException("Password must contain at least one special character.")
+                throw ValidationException("A senha deve conter 1 caractere especial.")
             }
         }
 
 
         fun create(name: String, email: String, passwordHash: String): User {
             if (name.isBlank() || email.isBlank()) {
-                throw IllegalArgumentException("Name and email are required.")
+                throw ValidationException("Nome e email são obrigatórios.")
             }
 
             return User(

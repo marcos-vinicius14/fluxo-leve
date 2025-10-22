@@ -40,4 +40,14 @@ dependencies {
 
 
     implementation(project(":core"))
+    implementation("io.ktor:ktor-server-content-negotiation:3.3.0")
+    implementation("io.ktor:ktor-server-core:3.3.0")
+    implementation("io.ktor:ktor-server-core:3.3.0")
+    implementation("io.ktor:ktor-server-core:3.3.0")
+    implementation("io.ktor:ktor-server-host-common:3.3.0")
+    implementation("io.ktor:ktor-server-status-pages:3.3.0")
+
+    implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:2.3.11")
+
+    implementation("io.ktor:ktor-server-content-negotiation-jvm:2.3.11")
 }

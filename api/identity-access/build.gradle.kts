@@ -14,4 +14,5 @@ dependencies {
 
     testImplementation("io.ktor:ktor-server-test-host")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:${project.properties["kotlin_version"]}")
+    implementation("org.jetbrains.exposed:exposed-java-time:0.51.1")
 }
